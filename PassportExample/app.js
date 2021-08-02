@@ -5,8 +5,9 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose");
-  var  path = require("path");
-mongoose.connect("mongodb://localhost:27017/auth_demo_app", { useNewUrlParser: true });    
+var path = require("path");
+  mongoose.connect('mongodb://localhost/MyDatabase',
+  { useNewUrlParser: true, useUnifiedTopology: true });  
 var app = express();
 app.set("view engine","ejs");
 app.set(express.static(path.join(__dirname,'views')));
@@ -44,15 +45,15 @@ app.get("/register", function(req, res){
 
 // handeling user sign up
 app.post("/register", function(req, res){
-    // console.log(req.body.username);
-    // console.log(req.body.password);
-    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+    Users=new User({username: req.body.username});
+//    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+    User.register(Users, req.body.password, function(err, user){
         if(err){
             console.log(err);
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/secret");
+            res.redirect("/login");
         });
     });
 });
