@@ -1,0 +1,13 @@
+html 
+    head 
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script
+            include ../public/register.js
+    body 
+        label Name
+        input(type='text', id='name')
+        label Userame
+        input(type='text', id='username')
+        label Password
+        input(type='text', id='password')
+        button(name='Login', onclick='registeruser(event)') Login
