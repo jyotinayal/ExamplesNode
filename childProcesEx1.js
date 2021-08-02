@@ -15,3 +15,6 @@ for(var i=0; i<3; i++) {
       console.log('Child process exited with exit code '+code);  
    });  
 } 
+
+//https://www.javatpoint.com/nodejs-child-process
+//https://www.geeksforgeeks.org/node-js-child-process/
