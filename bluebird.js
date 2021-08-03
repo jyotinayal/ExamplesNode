@@ -6,7 +6,7 @@ var url = 'mongodb://localhost/EmployeeDB';
 mongoClient.connectAsync('mongodb://localhost/EmployeeDB')
 
 .then(function(db) {
-        return db.collection('Employee').findAsync({})
+        return db.collection('employees').findAsync({})
 
     })
     .then(function(cursor) {
